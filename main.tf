@@ -1,15 +1,18 @@
-provider "aws" {
-  region     = "us-east-1"
-}
-
-resource "aws_instance" "example" {
-  ami           = "ami-2757f631"
-  instance_type = "t2.micro"
-  tags = {
-    name = "TF_christine"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
   }
 }
 
-output "instance_ip_addr" {
-  value = aws_instance.example.private_ip
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-2"
+}
+
+# Create a VPC
+resource "aws_vpc" "christine-terraform" {
+  cidr_block = "10.0.0.0/16"
 }
