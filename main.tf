@@ -1,5 +1,4 @@
 provider "aws" {
-  profile    = "aws-with-session-tokens"
   region     = "us-east-1"
 }
 
